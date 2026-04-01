@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+    <filter id="blur1" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="80"/>
+    </filter>
+    <filter id="blur2" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="60"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0D0D1A"/>
+
+  <!-- Decorative circles -->
+  <circle cx="200" cy="120" r="200" fill="#7C3AED" opacity="0.15" filter="url(#blur1)"/>
+  <circle cx="1000" cy="510" r="180" fill="#EC4899" opacity="0.12" filter="url(#blur2)"/>
+
+  <!-- Main text -->
+  <text x="600" y="300" text-anchor="middle" font-family="Inter,sans-serif" font-weight="900" font-size="120" fill="url(#textGrad)" letter-spacing="-4">tinkl</text>
+
+  <!-- Tagline -->
+  <text x="600" y="380" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600" font-size="28" fill="white" opacity="0.5">Stop Planning. Start Happening.</text>
+
+  <!-- Domain -->
+  <text x="1160" y="600" text-anchor="end" font-family="Inter,sans-serif" font-weight="600" font-size="18" fill="white" opacity="0.25">tinkl.au</text>
+</svg>
