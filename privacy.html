@@ -42,7 +42,7 @@
     <div class="section-label">Legal</div>
     <h1>Privacy Policy</h1>
     <p class="subtitle">How we collect, use, and protect your personal information.</p>
-    <div class="effective-date">Effective 1 April 2026</div>
+    <div class="effective-date">Effective 1 April 2026 · Updated 5 May 2026</div>
   </div>
 </section>
 
@@ -95,6 +95,9 @@
           <tr><td>Availability selections</td><td>Event planning</td><td>User-initiated</td></tr>
           <tr><td>RSVP responses</td><td>Responding to events</td><td>User-initiated</td></tr>
           <tr><td>Poll responses</td><td>Group polls</td><td>User-initiated</td></tr>
+          <tr><td>Memory photos</td><td>Rating past events (optional photo)</td><td>User-initiated</td></tr>
+          <tr><td>Memory ratings</td><td>Rating past events (fire/good/meh)</td><td>User-initiated</td></tr>
+          <tr><td>Payment details</td><td>Wallet setup (PayPal, PayID, BSB, account, bank)</td><td>No</td></tr>
         </tbody>
       </table>
 
@@ -128,16 +131,64 @@
       </table>
 
       <div class="policy-highlight">
-        <p><strong>About location data:</strong> When you create a Shake, your device's GPS coordinates are used locally to determine a place name (e.g., "Hyde Park, Sydney"). Only the place name and suburb are sent to our servers. Raw GPS coordinates are not stored. Location access is never used in the background.</p>
+        <p><strong>About location data:</strong> When you create a Shake, your device's GPS coordinates are used locally to determine a place name (e.g., "Hyde Park, Sydney"). Only the place name and suburb are sent to our servers. Location access is never used in the background.</p>
+        <p>When you select a location for a calendar event via search, the place name, formatted address, and geographic coordinates are stored to enable accurate directions and ride-sharing links. Coordinates are never displayed to users.</p>
       </div>
 
-      <h3>2.4 Information We Do Not Collect</h3>
+      <h3>2.4 Information Processed by AI Features</h3>
+      <p>
+        When you use Tinkl's optional AI features ("Make it an event" suggestions in chat, and the
+        "Quick draft" prompt at the top of Create Event), the natural-language text you tap or type
+        is sent to OpenAI for parsing into a draft event. This processing happens only when you tap
+        an AI suggestion or the Generate button — it is never automatic and never includes anyone
+        else's messages.
+      </p>
+      <table class="policy-table">
+        <thead>
+          <tr>
+            <th>Information</th>
+            <th>When Collected</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Chat message text (the single tapped message)</td><td>When you tap an "AI draft" suggestion in chat</td><td>Generate a structured event draft for your review</td></tr>
+          <tr><td>Free-form prompt text</td><td>When you tap "Generate" in the AI quick-draft input</td><td>Generate a structured event draft for your review</td></tr>
+          <tr><td>Calendar timezone identifier</td><td>Sent alongside both flows</td><td>Resolve relative phrases like "tomorrow" correctly</td></tr>
+        </tbody>
+      </table>
+      <p>
+        We log per-user metadata (timestamp, success/failure, latency) in our database for
+        rate-limiting and cost monitoring. We do not persist the message or prompt text on our
+        servers.
+      </p>
+
+      <h3>2.5 Mentions and Year-End Wrapped</h3>
+      <p>
+        <strong>@mentions:</strong> When you type <code>@&lt;name&gt;</code> in a calendar chat,
+        the mentioned member receives a notification with your message. We do not share your
+        messages outside the calendar's membership.
+      </p>
+      <p>
+        <strong>Year-end Wrapped:</strong> Once per year (December 1) we generate an in-app
+        summary of each calendar's activity (event counts, photo stickers collected, top
+        contributors) using data already in your account. Wrapped is visible only to members
+        of the relevant calendar and is computed on demand each time you open it. We log a
+        small record of share actions (no message content) for product analytics.
+      </p>
+
+      <h3>2.6 Local Caching on Your Device</h3>
+      <p>
+        Some app data is cached locally on your device using encrypted local storage to enable
+        offline access and faster startup. This cached data never leaves your device.
+      </p>
+
+      <h3>2.7 Information We Do Not Collect</h3>
       <p>We do not collect:</p>
       <ul>
-        <li>Precise GPS coordinates (only geocoded place names)</li>
-        <li>Background location data</li>
+        <li>Background location data or continuous GPS tracking</li>
         <li>Contacts or address book information</li>
-        <li>Financial or payment information</li>
+        <li>Credit card numbers or bank login credentials (we only store payment receiving details you provide for cost-splitting)</li>
         <li>Health or fitness data</li>
         <li>Browsing or search history outside the App</li>
         <li>Advertising identifiers or device IDs for tracking</li>
@@ -164,6 +215,9 @@
           <tr><td>Power the Shakes feature</td><td>Location place name (when you actively create a Shake)</td></tr>
           <tr><td>Send notifications</td><td>Push token, notification content</td></tr>
           <tr><td>Enforce user safety</td><td>Blocked user lists, notification preferences</td></tr>
+          <tr><td>Display event memories</td><td>Memory photos and ratings, in your timeline and shared with calendar members</td></tr>
+          <tr><td>Enable cost splitting</td><td>Payment receiving details, displayed only to event members</td></tr>
+          <tr><td>Provide directions and ride links</td><td>Event location coordinates for map and ride-hailing apps</td></tr>
           <tr><td>Award badges and rank titles</td><td>Activity counts (aggregated)</td></tr>
         </tbody>
       </table>
@@ -212,6 +266,16 @@
             <td>Location autocomplete (Places API, proxied via our server)</td>
             <td>United States</td>
           </tr>
+          <tr>
+            <td><strong>OpenAI, L.L.C.</strong></td>
+            <td>AI event-extraction (chat-message and quick-draft prompts, plus your timezone)</td>
+            <td>United States</td>
+          </tr>
+          <tr>
+            <td><strong>Uber Technologies, Inc.</strong></td>
+            <td>Ride-hailing deep link (optional; location passed via URL only when you tap the ride icon)</td>
+            <td>United States</td>
+          </tr>
         </tbody>
       </table>
 
@@ -219,7 +283,8 @@
       <p>
         Your personal information is primarily stored in Australia (Supabase Sydney region).
         However, some information is disclosed to service providers in the United States
-        (Expo for push notifications, Google for location search) as described above. In
+        (Expo for push notifications, Google for location search, OpenAI for optional AI
+        event-extraction) as described above. In
         accordance with Australian Privacy Principle 8, we take reasonable steps to ensure
         these overseas recipients handle your information consistently with the APPs.
       </p>
@@ -247,11 +312,25 @@
       <h3>5.1 Where Your Data Is Stored</h3>
       <p>
         Your data is stored on Supabase infrastructure in the Sydney, Australia (ap-southeast-2)
-        region. File uploads (profile photos, calendar cover images, stickers) are stored in
+        region. File uploads (profile photos, calendar cover images, stickers, memory photos) are stored in
         Supabase Storage in the same region.
       </p>
 
-      <h3>5.2 Security Measures</h3>
+      <h3>5.2 Admin Access to User Content</h3>
+      <p>
+        As the operator of Tinkl, we have technical access to all data stored on our servers,
+        including user-uploaded photos, messages, and profile information. This is inherent to
+        operating a database-backed service and is consistent with industry practice.
+      </p>
+      <p><strong>Our commitments regarding admin access:</strong></p>
+      <ul>
+        <li><strong>No routine browsing:</strong> We do not browse, view, or access user-uploaded photos, messages, or personal content as part of normal operations. There is no admin interface for viewing user photos.</li>
+        <li><strong>Access only when necessary:</strong> We will only access user content to respond to reported abuse or safety concerns, comply with valid legal requests, investigate technical issues, or at your explicit request.</li>
+        <li><strong>Audit logging:</strong> All administrative access to user content is logged in an audit trail, including who accessed what, when, and why.</li>
+        <li><strong>No sharing:</strong> User content accessed during investigations is never shared externally except as required by law.</li>
+      </ul>
+
+      <h3>5.3 Security Measures</h3>
       <p>We implement the following security measures to protect your information:</p>
       <ul>
         <li><strong>Encryption in transit:</strong> All data transmitted between your device and our servers is encrypted using HTTPS/TLS.</li>
@@ -261,7 +340,7 @@
         <li><strong>API key security:</strong> Third-party API keys are stored server-side and never shipped in the app binary.</li>
       </ul>
 
-      <h3>5.3 Data Retention</h3>
+      <h3>5.4 Data Retention</h3>
       <p>
         We retain your personal information for as long as your account is active. When you
         delete your account, all your data is permanently deleted (see Section 7). We do not
@@ -325,7 +404,7 @@
         <li>All your notifications and push tokens</li>
         <li>Your badges, titles, and stickers</li>
         <li>Your blocked user records and notification preferences</li>
-        <li>All uploaded files (profile photos, calendar cover images)</li>
+        <li>All uploaded files (profile photos, calendar cover images, memory photos)</li>
       </ul>
       <p><strong>Deletion is immediate and irreversible.</strong> There is no grace period or recovery option.</p>
     </div>
