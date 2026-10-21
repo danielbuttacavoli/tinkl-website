@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tinkl</title>
+  <meta name="description" content="Tinkl — see who's free, send a shake, and plan with your people." />
+  <meta property="og:title" content="You're invited on Tinkl" />
+  <meta property="og:description" content="Tap to open the invite in Tinkl." />
+  <meta property="og:image" content="https://tinkl.au/og-image.svg" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* GitHub Pages serves this file for every unknown path, including
+       /invite/<code> and /join/<code>, so all asset paths are root-relative. */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      color: #fff;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 40px 28px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+    .logo { font-size: 48px; margin-bottom: 16px; }
+    h1 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+    p { font-size: 15px; opacity: 0.9; line-height: 1.5; margin-bottom: 28px; }
+    .btn {
+      display: block;
+      padding: 14px 24px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      margin: 10px 0;
+    }
+    .btn-primary { background: #fff; color: #7C3AED; }
+    .btn-secondary { background: rgba(255, 255, 255, 0.18); color: #fff; border: 1px solid rgba(255, 255, 255, 0.3); }
+    .hint { font-size: 13px; opacity: 0.75; margin-top: 18px; margin-bottom: 0; }
+    .home { color: #fff; font-size: 14px; opacity: 0.85; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="logo" id="logo">&#128197;</div>
+    <h1 id="title">Page not found</h1>
+    <p id="body">This page doesn't exist. It may have been moved or removed.</p>
+    <div id="actions" hidden>
+      <a class="btn btn-primary" id="open" href="#">Open in Tinkl</a>
+      <a class="btn btn-secondary" href="https://apps.apple.com/app/tinkl/id6744145937">Get Tinkl on the App Store</a>
+      <a class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=com.buttacavoli.tinkl">Get Tinkl on Google Play</a>
+      <p class="hint">Already installed? Tap "Open in Tinkl". New to Tinkl? Install it, then tap this link again.</p>
+    </div>
+    <a class="home" id="home" href="/">Go to tinkl.au</a>
+  </main>
+  <script>
+    (function () {
+      // /invite/<code> = friend invite, /join/<code> = calendar invite.
+      var match = window.location.pathname.match(/^\/(invite|join)\/([A-Za-z0-9_-]{4,64})\/?$/);
+      if (!match) return;
+      var kind = match[1];
+      var code = match[2];
+      var copy = kind === "invite"
+        ? { logo: "🤝", title: "You've been invited!", body: "Someone wants to connect with you on Tinkl, the social planning app for friends." }
+        : { logo: "📅", title: "Join a calendar on Tinkl", body: "You've been invited to a shared calendar. Open it in Tinkl to see what's planned and join in." };
+      document.title = copy.title + " — Tinkl";
+      document.getElementById("logo").textContent = copy.logo;
+      document.getElementById("title").textContent = copy.title;
+      document.getElementById("body").textContent = copy.body;
+      document.getElementById("open").setAttribute("href", "tinkl://" + kind + "/" + encodeURIComponent(code));
+      document.getElementById("actions").hidden = false;
+      document.getElementById("home").hidden = true;
+    })();
+  </script>
+</body>
+</html>

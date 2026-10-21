@@ -1,0 +1,21 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "P6VTQ7HV3F.com.buttacavoli.tinkl",
+          "P6VTQ7HV3F.com.buttacavoli.tinkl.preview"
+        ],
+        "components": [
+          { "/": "/calendar/*", "comment": "calendar detail" },
+          { "/": "/calendar/*/event/*", "comment": "event detail (iMessage Extension target)" },
+          { "/": "/calendar/*/wrapped", "comment": "Tinkl Wrapped reel" },
+          { "/": "/create-event*", "comment": "Siri App Intent target" },
+          { "/": "/invite/*", "comment": "friend invite (app/invite/[code])" },
+          { "/": "/join/*", "comment": "calendar invite (app/join/[code])" },
+          { "/": "/friend-profile/*", "comment": "friend profile" }
+        ]
+      }
+    ]
+  }
+}
