@@ -66,20 +66,73 @@
     <a class="home" id="home" href="/">Go to tinkl.au</a>
   </main>
   <script>
+    // Maps a path to the landing copy and the app link, or null for a real 404.
+    //   /invite/<code>                   friend invite
+    //   /join/<code>                     calendar invite
+    //   /calendar/<uuid>/event/<uuid>    event shared from the iMessage extension
+    //   /calendar/<uuid>/wrapped         Tinkl Wrapped
+    //   /calendar/<uuid>                 calendar link
+    //   /friend-profile/<uuid>           friend profile
+    // These are the Universal Link paths in .well-known/apple-app-site-association
+    // (all but the Siri-only /create-event). Keep the three in sync: the AASA,
+    // this page, and lib/deepLinks.ts / lib/nativeIntent.ts in the app.
+    // The iMessage card carries the event URL so that recipients without the
+    // app can open it; before this page knew it, they got "Page not found"
+    // (review F-4.2). Ids are validated, then encoded into the app link.
+    function tinklLanding(pathname) {
+      var uuid = "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}";
+      var invite = pathname.match(/^\/(invite|join)\/([A-Za-z0-9_-]{4,64})\/?$/);
+      if (invite) {
+        var kind = invite[1];
+        return {
+          copy: kind === "invite"
+            ? { logo: "🤝", title: "You've been invited!", body: "Someone wants to connect with you on Tinkl, the social planning app for friends." }
+            : { logo: "📅", title: "Join a calendar on Tinkl", body: "You've been invited to a shared calendar. Open it in Tinkl to see what's planned and join in." },
+          href: "tinkl://" + kind + "/" + encodeURIComponent(invite[2])
+        };
+      }
+      var event = pathname.match(new RegExp("^/calendar/(" + uuid + ")/event/(" + uuid + ")/?$"));
+      if (event) {
+        return {
+          copy: { logo: "🎉", title: "You've been invited to an event", body: "A friend shared an event with you on Tinkl, the social planning app for friends. Open it in Tinkl to see the details and RSVP." },
+          href: "tinkl://calendar/event/" + encodeURIComponent(event[2].toLowerCase()) +
+            "?calendarId=" + encodeURIComponent(event[1].toLowerCase())
+        };
+      }
+      var wrapped = pathname.match(new RegExp("^/calendar/(" + uuid + ")/wrapped/?$"));
+      if (wrapped) {
+        return {
+          copy: { logo: "✨", title: "A Tinkl Wrapped for you", body: "A friend shared their calendar's year in review. Open it in Tinkl to watch it." },
+          href: "tinkl://calendar/" + encodeURIComponent(wrapped[1].toLowerCase()) + "/wrapped"
+        };
+      }
+      var calendar = pathname.match(new RegExp("^/calendar/(" + uuid + ")/?$"));
+      if (calendar) {
+        return {
+          copy: { logo: "📅", title: "A shared calendar on Tinkl", body: "Someone shared a calendar with you on Tinkl. Open it in Tinkl to see what's planned." },
+          href: "tinkl://calendar/" + encodeURIComponent(calendar[1].toLowerCase())
+        };
+      }
+      var profile = pathname.match(new RegExp("^/friend-profile/(" + uuid + ")/?$"));
+      if (profile) {
+        return {
+          copy: { logo: "👋", title: "Someone on Tinkl", body: "A friend shared a Tinkl profile with you. Open it in Tinkl to connect." },
+          href: "tinkl://friend-profile/" + encodeURIComponent(profile[1].toLowerCase())
+        };
+      }
+      return null;
+    }
+
     (function () {
-      // /invite/<code> = friend invite, /join/<code> = calendar invite.
-      var match = window.location.pathname.match(/^\/(invite|join)\/([A-Za-z0-9_-]{4,64})\/?$/);
-      if (!match) return;
-      var kind = match[1];
-      var code = match[2];
-      var copy = kind === "invite"
-        ? { logo: "🤝", title: "You've been invited!", body: "Someone wants to connect with you on Tinkl, the social planning app for friends." }
-        : { logo: "📅", title: "Join a calendar on Tinkl", body: "You've been invited to a shared calendar. Open it in Tinkl to see what's planned and join in." };
+      if (typeof document === "undefined") return;
+      var landing = tinklLanding(window.location.pathname);
+      if (!landing) return;
+      var copy = landing.copy;
       document.title = copy.title + " — Tinkl";
       document.getElementById("logo").textContent = copy.logo;
       document.getElementById("title").textContent = copy.title;
       document.getElementById("body").textContent = copy.body;
-      document.getElementById("open").setAttribute("href", "tinkl://" + kind + "/" + encodeURIComponent(code));
+      document.getElementById("open").setAttribute("href", landing.href);
       document.getElementById("actions").hidden = false;
       document.getElementById("home").hidden = true;
     })();
