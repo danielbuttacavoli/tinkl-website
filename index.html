@@ -132,6 +132,9 @@
       box-shadow: 0 8px 24px rgba(13,13,26,0.25);
     }
     .store-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(13,13,26,0.35); }
+    /* Pre-launch placeholder: looks like a store badge but isn't a link. */
+    .store-btn-soon { cursor: default; opacity: 0.85; }
+    .store-btn-soon:hover { transform: none; box-shadow: none; }
     .store-btn-icon { font-size: 1.8rem; line-height: 1; }
     .store-btn-text { display: flex; flex-direction: column; text-align: left; }
     .store-btn-label { font-size: 0.7rem; opacity: 0.7; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
@@ -523,6 +526,31 @@
     .quote-name { font-size: 0.82rem; font-weight: 700; }
     .quote-handle { font-size: 0.75rem; color: var(--text-muted); }
 
+    /* ─── MORE FEATURES ───────────────────────────────────── */
+    .more { padding: 96px 24px; text-align: center; }
+    .more-inner { max-width: 1040px; margin: 0 auto; }
+    .more h2 {
+      font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      margin-bottom: 40px;
+    }
+    .more-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      text-align: left;
+    }
+    .more-card {
+      background: var(--white);
+      border: 1px solid rgba(13,13,26,0.08);
+      border-radius: 20px;
+      padding: 22px;
+    }
+    .more-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .more-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.02em; }
+    .more-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+
     /* ─── HOW IT WORKS ────────────────────────────────────── */
     .how {
       padding: 120px 24px;
@@ -701,7 +729,7 @@
   <a href="index.html" class="nav-logo">tinkl</a>
   <div class="nav-right">
     <a href="#features" class="btn btn-secondary">Features</a>
-    <a href="#download" class="btn btn-primary">Download App</a>
+    <a href="#download" class="btn btn-primary">Get Tinkl</a>
   </div>
 </nav>
 
@@ -713,7 +741,7 @@
 
   <div class="hero-badge">
     <span class="hero-badge-dot"></span>
-    Live on iOS &amp; Android
+    Coming soon to iOS
   </div>
 
   <h1>Stop planning.<br><span class="grad">Start happening.</span></h1>
@@ -723,23 +751,20 @@
     without the 47-message group chat that goes nowhere.
   </p>
 
+  <!-- LAUNCH: when the App Store listing is live, turn each .store-btn-soon
+       span into <a href="https://apps.apple.com/app/tinkl/id6744145937"
+       class="store-btn"> with the label "Download on the". Android is not
+       launching yet, so there is no Google Play button. -->
   <div class="hero-ctas">
-    <a href="#" class="store-btn" id="download">
+    <span class="store-btn store-btn-soon" aria-label="Coming soon to the App Store">
       <span class="store-btn-icon"> </span>
       <span class="store-btn-text">
-        <span class="store-btn-label">Download on the</span>
+        <span class="store-btn-label">Coming soon to the</span>
         <span class="store-btn-name">App Store</span>
       </span>
-    </a>
-    <a href="#" class="store-btn">
-      <span class="store-btn-icon">&#9654;</span>
-      <span class="store-btn-text">
-        <span class="store-btn-label">Get it on</span>
-        <span class="store-btn-name">Google Play</span>
-      </span>
-    </a>
+    </span>
   </div>
-  <p class="trust-strip">Free to download &middot; No ads &middot; No credit card</p>
+  <p class="trust-strip">iPhone first &middot; Android on the way &middot; Free, no ads</p>
 
   <!-- Phone mockup -->
   <div class="phone-wrap">
@@ -751,7 +776,7 @@
           <div class="phone-avatar" style="background:rgba(124,58,237,0.3);">&#128105;</div>
           <div class="phone-card-text">
             <div class="phone-card-name">Zara</div>
-            <div class="phone-card-status">Free now &middot; near Shoreditch</div>
+            <div class="phone-card-status">Free now &middot; near Yarraville</div>
           </div>
           <div class="phone-status-dot status-green"></div>
         </div>
@@ -846,7 +871,7 @@
             <div class="avail-avatar" style="background:rgba(124,58,237,0.3);">&#128105;</div>
             <div class="avail-info">
               <div class="avail-name">Zara</div>
-              <div class="avail-time">Near Shoreditch &middot; right now</div>
+              <div class="avail-time">Near Yarraville &middot; right now</div>
             </div>
             <div class="avail-badge badge-now">Free now</div>
           </div>
@@ -903,7 +928,7 @@
                 <div class="shake-card-big-sub">Sent to Inner Circle &middot; 2 min ago</div>
               </div>
             </div>
-            <div class="shake-card-big-loc">&#128205; "Rooftop bar on Brick Lane — who's in?"</div>
+            <div class="shake-card-big-loc">&#128205; "Rooftop bar in Footscray — who's in?"</div>
             <div class="shake-card-big-actions">
               <div class="shake-action-btn shake-action-in">&#128588; I'm in!</div>
               <div class="shake-action-btn shake-action-maybe">&#129300; Maybe</div>
@@ -991,6 +1016,56 @@
   </div>
 </section>
 
+<!-- ─── MORE FEATURES ──────────────────────────────────────────── -->
+<section class="more">
+  <div class="more-inner">
+    <div class="section-label section-label-purple">And there's more</div>
+    <h2>Everything else your plans need.</h2>
+    <div class="more-grid">
+      <div class="more-card">
+        <div class="more-icon">&#10024;</div>
+        <h3>AI quick drafts</h3>
+        <p>Type "dinner Friday 7pm at Rosa's" and Tinkl drafts the event for you to check. Optional, and only when you tap Generate.</p>
+      </div>
+      <div class="more-card">
+        <div class="more-icon">&#128172;</div>
+        <h3>Chat, mentions &amp; polls</h3>
+        <p>Every calendar has its own chat. @mention a friend, or run a quick poll to settle where to eat.</p>
+      </div>
+      <div class="more-card">
+        <div class="more-icon">&#128184;</div>
+        <h3>Split costs</h3>
+        <p>Add the booking or the Airbnb, split it, and see who's paid. Your bank details only show to people who owe you.</p>
+      </div>
+      <div class="more-card">
+        <div class="more-icon">&#127939;</div>
+        <h3>Running late</h3>
+        <p>Turn on running-late nudges and Tinkl will spot when you're cutting it fine, so you can tell the group in one tap.</p>
+      </div>
+      <div class="more-card">
+        <div class="more-icon">&#128248;</div>
+        <h3>Memories &amp; stickers</h3>
+        <p>Rate the night and add a photo. When the host posts a sticker, everyone who went collects it.</p>
+      </div>
+      <div class="more-card">
+        <div class="more-icon">&#127874;</div>
+        <h3>Friends' birthdays</h3>
+        <p>See whose birthday is coming up, so it's never a last-minute scramble.</p>
+      </div>
+      <div class="more-card">
+        <div class="more-icon">&#128241;</div>
+        <h3>iMessage &amp; Siri</h3>
+        <p>Draft an event and send it as a card right inside Messages, or just ask Siri to create a Tinkl event.</p>
+      </div>
+      <div class="more-card">
+        <div class="more-icon">&#127873;</div>
+        <h3>Tinkl Wrapped</h3>
+        <p>Every December, look back on your crew's year: the events, the photos, the MVP.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── HOW IT WORKS ───────────────────────────────────────────── -->
 <section class="how">
   <div class="how-inner">
@@ -1024,60 +1099,46 @@
 </section>
 
 <!-- ─── SOCIAL PROOF ───────────────────────────────────────────── -->
+<!--
+  Hidden until there are genuine testimonials. The three previous quotes
+  (Aisha K., James R., Priya M.) were placeholders, not real users, and were
+  removed: a published testimonial must be the person's own words about their
+  own use of the app (Australian Consumer Law; ACCC guidance on reviews).
+
+  To publish one: get the quote in the person's own words (lightly trimmed is
+  fine), confirm they're happy for it to appear with their first name and
+  suburb, replace THEIR OWN WORDS below, then remove the comment markers
+  around the section. Don't add star ratings unless they actually rated it.
+
 <section class="social-proof">
   <div class="social-proof-inner">
     <div class="section-label section-label-pink" style="text-align:center;">Real people, real hangouts</div>
     <h2>They stopped texting.<br>They started doing.</h2>
-    <p>Tinkl users spend less time organising and more time actually together.</p>
-
     <div class="quotes-grid">
       <div class="quote-card quote-card-1">
-        <div class="quote-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="quote-text">
-          "I sent a shake at 6pm on a Thursday and had a rooftop dinner with five friends
-          by 8. That would have taken three days of group chat before."
-        </p>
+        <p class="quote-text">"THEIR OWN WORDS"</p>
         <div class="quote-author">
           <span class="quote-avatar">&#128105;</span>
           <div>
-            <div class="quote-name">Aisha K.</div>
-            <div class="quote-handle">London &middot; iOS user</div>
+            <div class="quote-name">Belle</div>
+            <div class="quote-handle">Yarraville &middot; iPhone</div>
           </div>
         </div>
       </div>
-
       <div class="quote-card quote-card-2">
-        <div class="quote-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="quote-text">
-          "The availability status thing is genius. I open Tinkl, see that two of my
-          mates are free, and we're already texting about where to meet. No preamble."
-        </p>
+        <p class="quote-text">"THEIR OWN WORDS"</p>
         <div class="quote-author">
           <span class="quote-avatar">&#129492;</span>
           <div>
-            <div class="quote-name">James R.</div>
-            <div class="quote-handle">Manchester &middot; Android user</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="quote-card quote-card-3">
-        <div class="quote-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="quote-text">
-          "We used the calendar feature to plan our whole friend group's holiday.
-          Found a date that worked for 7 people in about 10 minutes. Honestly wild."
-        </p>
-        <div class="quote-author">
-          <span class="quote-avatar">&#128105;&#8205;&#129425;</span>
-          <div>
-            <div class="quote-name">Priya M.</div>
-            <div class="quote-handle">Bristol &middot; iOS user</div>
+            <div class="quote-name">Leo</div>
+            <div class="quote-handle">Williamstown &middot; iPhone</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+-->
 
 <!-- ─── FAQ ──────────────────────────────────────────────────── -->
 <section class="faq" id="faq">
@@ -1103,11 +1164,20 @@
       </details>
       <details class="faq-item">
         <summary>Is my data private?</summary>
-        <p>Very. Your information is only shared with friends you've accepted. We don't sell your data, we don't run ads, and we don't track you. All data is stored in Australia. Read our full <a href="privacy.html">Privacy Policy</a> for details.</p>
+        <p>Yes. Your information is only shared with friends you've accepted and the calendars you join. We don't sell your data, we don't run ads, and we don't track you. Your account data is stored in Australia (Sydney); a few optional features use overseas services, such as OpenAI for AI drafts. Our <a href="privacy.html">Privacy Policy</a> lists them all.</p>
       </details>
       <details class="faq-item">
         <summary>What platforms is Tinkl on?</summary>
-        <p>Tinkl is available on both iOS and Android.</p>
+        <p>Tinkl is launching on iPhone first. Android is on the way.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I delete my account?</summary>
+        <p>In the app, go to Settings &gt; Delete Account. It's immediate and permanent. See <a href="support.html#delete">Support</a> for what gets deleted.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I report someone?</summary>
+        <!-- REPORT FEATURE: when in-app reporting ships, change to "In the app, you can report a message or a person, and block them." -->
+        <p>You can block anyone from their profile. To report a message, a person or anything else, email <a href="mailto:support@tinkl.au?subject=Report">support@tinkl.au</a>. We review every report within 24 hours. More on our <a href="support.html#report">Support</a> page.</p>
       </details>
     </div>
   </div>
@@ -1128,25 +1198,19 @@
   <div class="final-cta-inner">
     <div class="section-label" style="color:rgba(255,255,255,0.6);margin-bottom:20px;">Ready?</div>
     <h2>Your friends<br>are waiting.</h2>
-    <p>Download Tinkl free. No subscription. No ads. Just your people.</p>
+    <p>Tinkl is coming soon to iPhone. Free. No subscription. No ads. Just your people.</p>
 
+    <!-- LAUNCH: swap for a link to the App Store listing (see the hero). -->
     <div class="cta-store-row">
-      <a href="#" class="store-btn store-btn-white">
+      <span class="store-btn store-btn-white store-btn-soon" aria-label="Coming soon to the App Store">
         <span class="store-btn-icon"> </span>
         <span class="store-btn-text">
-          <span class="store-btn-label" style="color:#555;">Download on the</span>
+          <span class="store-btn-label" style="color:#555;">Coming soon to the</span>
           <span class="store-btn-name">App Store</span>
         </span>
-      </a>
-      <a href="#" class="store-btn store-btn-light">
-        <span class="store-btn-icon" style="color:#fff;">&#9654;</span>
-        <span class="store-btn-text">
-          <span class="store-btn-label">Get it on</span>
-          <span class="store-btn-name">Google Play</span>
-        </span>
-      </a>
+      </span>
     </div>
-    <p class="trust-strip-dark">Free forever &middot; No credit card &middot; No data selling</p>
+    <p class="trust-strip-dark">Free &middot; No ads &middot; No data selling</p>
   </div>
 </section>
 
@@ -1156,7 +1220,7 @@
   <div class="footer-links">
     <a href="privacy.html">Privacy</a>
     <a href="terms.html">Terms</a>
-    <a href="mailto:support@tinkl.au">Support</a>
+    <a href="support.html">Support</a>
     <a href="mailto:support@tinkl.au?subject=Press%20Inquiry">Press</a>
     <a href="mailto:support@tinkl.au">Contact</a>
   </div>
@@ -1164,7 +1228,7 @@
 </footer>
 
 <div class="mobile-cta-bar">
-  <a href="#download" class="btn btn-primary mobile-cta-btn">Download Tinkl</a>
+  <a href="#download" class="btn btn-primary mobile-cta-btn">Coming soon to iPhone</a>
 </div>
 
 </body>

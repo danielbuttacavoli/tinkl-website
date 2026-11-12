@@ -32,7 +32,7 @@
   <a href="index.html" class="nav-logo">tinkl</a>
   <div class="nav-right">
     <a href="index.html#features" class="btn btn-secondary">Features</a>
-    <a href="index.html#download" class="btn btn-primary">Download App</a>
+    <a href="index.html#download" class="btn btn-primary">Get Tinkl</a>
   </div>
 </nav>
 
@@ -42,7 +42,7 @@
     <div class="section-label">Legal</div>
     <h1>Privacy Policy</h1>
     <p class="subtitle">How we collect, use, and protect your personal information.</p>
-    <div class="effective-date">Effective 1 April 2026 · Updated 6 May 2026</div>
+    <div class="effective-date">Effective 1 April 2026 · Updated 11 November 2026</div>
   </div>
 </section>
 
@@ -98,6 +98,14 @@
           <tr><td>Memory photos</td><td>Rating past events (optional photo)</td><td>User-initiated</td></tr>
           <tr><td>Memory ratings</td><td>Rating past events (fire/good/meh)</td><td>User-initiated</td></tr>
           <tr><td>Payment details</td><td>Wallet setup (PayPal, PayID, BSB, account, bank)</td><td>No</td></tr>
+          <tr><td>Event costs and who has paid</td><td>Splitting a cost on an event</td><td>User-initiated</td></tr>
+          <tr><td>Birthday (day and month, no year)</td><td>Profile / birthday prompt</td><td>No</td></tr>
+          <tr><td>Interests</td><td>Onboarding / profile editing</td><td>No</td></tr>
+          <tr><td>Availability status (e.g. "Free tonight")</td><td>When you set your status</td><td>No</td></tr>
+          <tr><td>Crews and Inner Circle</td><td>Organising your friends</td><td>No</td></tr>
+          <tr><td>Home screen layout preferences</td><td>Customise Home</td><td>No</td></tr>
+          <tr><td>Notification preferences, muted friends and calendars, blocked users</td><td>Settings / profiles</td><td>No</td></tr>
+          <tr><td>Messages to our support address</td><td>When you email us or report something</td><td>User-initiated</td></tr>
         </tbody>
       </table>
 
@@ -113,6 +121,9 @@
         <tbody>
           <tr><td>Push notification token</td><td>When you enable notifications</td><td>Deliver notifications to your device</td></tr>
           <tr><td>Device platform (iOS/Android)</td><td>When you enable notifications</td><td>Route notifications correctly</td></tr>
+          <tr><td>Crash and error reports (error message, technical trace, app version, platform, and your user ID if you're signed in)</td><td>When the app hits an error</td><td>Find and fix bugs. We collect these ourselves; no third-party crash or analytics service is used</td></tr>
+          <tr><td>Last active time</td><td>When you use the App</td><td>Friend suggestions and re-engagement reminders</td></tr>
+          <tr><td>Usage counts for AI, place search and travel-time requests (time and count only)</td><td>When you use those features</td><td>Rate limits and cost control</td></tr>
         </tbody>
       </table>
 
@@ -126,13 +137,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>Device location (when in use only)</td><td>When you create a Shake</td><td>Identify your current location by place name</td></tr>
+          <tr><td>Device location (while the App is open only)</td><td>When you create a Shake</td><td>Identify your current location by place name</td></tr>
+          <tr><td>Device location (while the App is open only)</td><td>If you turn on running-late nudges, shortly before an event you're going to</td><td>Estimate your travel time to the event</td></tr>
+          <tr><td>Phone calendar (read and add)</td><td>When you allow calendar access</td><td>Warn you about clashes with your other plans, and add confirmed Tinkl events to your calendar</td></tr>
+          <tr><td>Camera and photo library</td><td>When you choose or take a photo</td><td>Profile, calendar cover, memory and sticker photos; saving stickers to your library</td></tr>
+          <tr><td>Notifications</td><td>When you allow notifications</td><td>Shakes, invites, messages and reminders</td></tr>
         </tbody>
       </table>
 
       <div class="policy-highlight">
-        <p><strong>About location data:</strong> When you create a Shake, your device's GPS coordinates are used locally to determine a place name (e.g., "Hyde Park, Sydney"). Only the place name and suburb are sent to our servers. Location access is never used in the background.</p>
-        <p>When you select a location for a calendar event via search, the place name, formatted address, and geographic coordinates are stored to enable accurate directions and ride-sharing links. Coordinates are never displayed to users.</p>
+        <p><strong>About location data:</strong> Location is only ever used while the App is open, never in the background.</p>
+        <p><strong>Shakes:</strong> your phone turns its location into a place name (e.g., "Hyde Park, Sydney") using the phone's built-in geocoder. Only the place name and suburb are sent to our servers.</p>
+        <p><strong>Running-late nudges (off unless you turn them on):</strong> about 30 minutes before an event you're attending, while the App is open, your current coordinates and the event's location are sent to our server and on to Google to estimate driving time. We don't store your coordinates.</p>
+        <p><strong>Event locations:</strong> when you pick a place for an event, its name, address and coordinates are stored for directions and ride-sharing links. Coordinates aren't shown to other users.</p>
+        <p><strong>Phone calendar:</strong> clash checks happen on your phone. We don't upload your other calendar events.</p>
       </div>
 
       <h3>2.4 Information Processed by AI Features</h3>
@@ -183,10 +201,13 @@
         small record of share actions (no message content) for product analytics.
       </p>
 
-      <h3>2.6 Local Caching on Your Device</h3>
+      <h3>2.6 Local Storage on Your Device</h3>
       <p>
-        Some app data is cached locally on your device using encrypted local storage to enable
-        offline access and faster startup. This cached data never leaves your device.
+        Some app data (for example your calendars, messages and friends) is cached in the App's
+        private storage on your device for offline access and faster startup, and is cleared when
+        you sign out. Your sign-in session is kept in the iOS Keychain. To let the iMessage
+        extension and Siri work, your current session is also shared with them through storage
+        that only Tinkl's own app and extensions can read. This data stays on your device.
       </p>
 
       <h3>2.7 Information We Do Not Collect</h3>
@@ -222,9 +243,16 @@
           <tr><td>Send notifications</td><td>Push token, notification content</td></tr>
           <tr><td>Enforce user safety</td><td>Blocked user lists, notification preferences</td></tr>
           <tr><td>Display event memories</td><td>Memory photos and ratings, in your timeline and shared with calendar members</td></tr>
-          <tr><td>Enable cost splitting</td><td>Payment receiving details, displayed only to event members</td></tr>
+          <tr><td>Enable cost splitting</td><td>Costs and payment status; your payment receiving details are shown only to people who currently owe you for a cost you added</td></tr>
           <tr><td>Provide directions and ride links</td><td>Event location coordinates for map and ride-hailing apps</td></tr>
           <tr><td>Award badges and rank titles</td><td>Activity counts (aggregated)</td></tr>
+          <tr><td>Suggest people you might know</td><td>Mutual friends, shared calendars and shared interests</td></tr>
+          <tr><td>Show friends' upcoming birthdays</td><td>Your birthday (day and month), shown to your accepted friends</td></tr>
+          <tr><td>Show who's free</td><td>Your availability status, shown to your friends</td></tr>
+          <tr><td>Running-late nudges (optional)</td><td>Your current location and the event's location, to estimate travel time</td></tr>
+          <tr><td>Reminders and nudges</td><td>Event dates, RSVPs and last active time</td></tr>
+          <tr><td>Fix bugs and keep the service reliable</td><td>Crash and error reports</td></tr>
+          <tr><td>Handle reports and keep people safe</td><td>Reports you send us, the content and accounts reported, and blocked user lists</td></tr>
         </tbody>
       </table>
 
@@ -245,6 +273,14 @@
         calendar in which they are posted. Shake place names are visible to the friends you
         invite to that Shake.
       </p>
+      <p>
+        Your availability status and birthday (day and month) are visible to your accepted
+        friends. People who share a friend, a calendar or an interest with you may see you in
+        "People you might know". Your payment receiving details are visible only to people who
+        currently owe you for a cost you added. People who aren't yet members of a calendar can
+        see a short preview of an event shared with them (title, time, place and calendar name)
+        so they can ask to join.
+      </p>
 
       <h3>4.2 With Service Providers</h3>
       <p>We use the following third-party service providers to operate the App. These providers process your information only as necessary to provide their services to us:</p>
@@ -264,12 +300,17 @@
           </tr>
           <tr>
             <td><strong>Expo (650 Industries)</strong></td>
-            <td>Push notification delivery</td>
+            <td>Push notification delivery (the notification's title and text, and your device's push token)</td>
+            <td>United States</td>
+          </tr>
+          <tr>
+            <td><strong>Apple Inc.</strong></td>
+            <td>Delivering notifications to your iPhone; turning your location into a place name for Shakes (your phone's built-in geocoder); Siri, if you use the Tinkl Siri command</td>
             <td>United States</td>
           </tr>
           <tr>
             <td><strong>Google LLC</strong></td>
-            <td>Location autocomplete (Places API, proxied via our server)</td>
+            <td>Place search (Places API) and, if you turn on running-late nudges, travel-time estimates (Distance Matrix API). Both go through our server, not directly from your phone</td>
             <td>United States</td>
           </tr>
           <tr>
@@ -289,8 +330,8 @@
       <p>
         Your personal information is primarily stored in Australia (Supabase Sydney region).
         However, some information is disclosed to service providers in the United States
-        (Expo for push notifications, Google for location search, OpenAI for optional AI
-        event-extraction) as described above. In
+        (Expo and Apple for notifications, Google for place search and travel times, OpenAI for
+        optional AI event drafts) as described above. In
         accordance with Australian Privacy Principle 8, we take reasonable steps to ensure
         these overseas recipients handle your information consistently with the APPs.
       </p>
@@ -332,7 +373,8 @@
       <ul>
         <li><strong>No routine browsing:</strong> We do not browse, view, or access user-uploaded photos, messages, or personal content as part of normal operations. There is no admin interface for viewing user photos.</li>
         <li><strong>Access only when necessary:</strong> We will only access user content to respond to reported abuse or safety concerns, comply with valid legal requests, investigate technical issues, or at your explicit request.</li>
-        <li><strong>Audit logging:</strong> All administrative access to user content is logged in an audit trail, including who accessed what, when, and why.</li>
+        <li><strong>A record of every investigation:</strong> when we access user content for an investigation, we record what was accessed, when, and why.</li>
+        <li><strong>Change history:</strong> our database keeps a history of changes to key records (such as profiles, events, messages and friendships) for up to 90 days, to investigate abuse and recover from errors. It's deleted with your account (see Section 7).</li>
         <li><strong>No sharing:</strong> User content accessed during investigations is never shared externally except as required by law.</li>
       </ul>
 
@@ -341,16 +383,26 @@
       <ul>
         <li><strong>Encryption in transit:</strong> All data transmitted between your device and our servers is encrypted using HTTPS/TLS.</li>
         <li><strong>Encryption at rest:</strong> All data at rest is encrypted by Supabase's infrastructure.</li>
-        <li><strong>Secure token storage:</strong> Authentication tokens are stored in the iOS Keychain (or Android equivalent), not in plaintext.</li>
+        <li><strong>Secure token storage:</strong> Your sign-in session is stored in the iOS Keychain. It's also shared, on your device only, with Tinkl's own iMessage extension and Siri command, using the Keychain and storage that only Tinkl's app and extensions can read (see Section 2.6). Signing out removes it.</li>
         <li><strong>Database access control:</strong> Every database table has Row Level Security (RLS) enabled, ensuring users can only access data they are authorised to see.</li>
-        <li><strong>API key security:</strong> Third-party API keys are stored server-side and never shipped in the app binary.</li>
+        <li><strong>API key security:</strong> Secret keys (Google, OpenAI and our server keys) are kept on our servers and never shipped in the App. The App contains only our public key, which on its own can't read anyone's data.</li>
+        <li><strong>Photos:</strong> uploaded photos are served from long, unguessable links. Anyone who has a photo's exact link can open it, so only share those links with people you trust.</li>
       </ul>
 
       <h3>5.4 Data Retention</h3>
       <p>
-        We retain your personal information for as long as your account is active. When you
-        delete your account, all your data is permanently deleted (see Section 7). We do not
-        retain copies of deleted data.
+        We keep your personal information for as long as your account is active. When you delete
+        your account, it is permanently deleted as described in Section 7, with these exceptions:
+      </p>
+      <ul>
+        <li><strong>Crash and error reports</strong> are kept, with your user ID removed, so they can't be linked back to you.</li>
+        <li><strong>Feedback you sent from the App</strong> is kept, with your user ID removed.</li>
+        <li><strong>Emails you sent to our support address</strong> stay in our mailbox.</li>
+        <li><strong>Backups:</strong> our hosting provider may hold encrypted backups for a short period before they are overwritten.</li>
+      </ul>
+      <p>
+        Separately from account deletion, the change history described in Section 5.2 is kept for
+        no more than 90 days.
       </p>
     </div>
 
@@ -400,18 +452,21 @@
       <p>When you delete your account, the following is immediately and permanently removed from our servers:</p>
       <ul>
         <li>Your authentication credentials (email, password)</li>
-        <li>Your profile (display name, bio, profile photo)</li>
-        <li>All calendars you own</li>
+        <li>Your profile (display name, bio, profile photo, status, birthday, interests, home layout)</li>
+        <li>All calendars you own, and everything in them</li>
         <li>All your calendar memberships</li>
-        <li>All messages you have sent</li>
-        <li>All event RSVPs and availability submissions</li>
-        <li>All Shakes (beacons) you have created</li>
-        <li>All your friendships and friend requests</li>
+        <li>All messages, comments, reactions and poll votes you have posted</li>
+        <li>All events you created, and your RSVPs and availability</li>
+        <li>All Shakes you have created, and your responses to others' Shakes</li>
+        <li>All your friendships, friend requests, invites, crews and crew memberships</li>
         <li>All your notifications and push tokens</li>
-        <li>Your badges, titles, and stickers</li>
-        <li>Your blocked user records and notification preferences</li>
-        <li>All uploaded files (profile photos, calendar cover images, memory photos)</li>
+        <li>Your payment details, and the costs you added</li>
+        <li>Your memories, badges, titles, and stickers</li>
+        <li>Your blocked user records, muted lists and notification preferences</li>
+        <li>All uploaded files (profile photos, calendar covers, crew images, memory photos, stickers)</li>
+        <li>The change history about your account (Section 5.2)</li>
       </ul>
+      <p>See Section 5.4 for the few things that are kept without your user ID.</p>
       <p><strong>Deletion is immediate and irreversible.</strong> There is no grace period or recovery option.</p>
     </div>
 
@@ -489,7 +544,7 @@
   <div class="footer-links">
     <a href="privacy.html">Privacy</a>
     <a href="terms.html">Terms</a>
-    <a href="mailto:support@tinkl.au">Support</a>
+    <a href="support.html">Support</a>
     <a href="mailto:support@tinkl.au?subject=Press%20Inquiry">Press</a>
     <a href="mailto:support@tinkl.au">Contact</a>
   </div>

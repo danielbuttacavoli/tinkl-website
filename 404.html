@@ -59,9 +59,12 @@
     <p id="body">This page doesn't exist. It may have been moved or removed.</p>
     <div id="actions" hidden>
       <a class="btn btn-primary" id="open" href="#">Open in Tinkl</a>
-      <a class="btn btn-secondary" href="https://apps.apple.com/app/tinkl/id6744145937">Get Tinkl on the App Store</a>
-      <a class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=com.buttacavoli.tinkl">Get Tinkl on Google Play</a>
-      <p class="hint">Already installed? Tap "Open in Tinkl". New to Tinkl? Install it, then tap this link again.</p>
+      <!-- LAUNCH: replace the span with
+           <a class="btn btn-secondary" href="https://apps.apple.com/app/tinkl/id6744145937">Get Tinkl on the App Store</a>
+           and the hint with: Already installed? Tap "Open in Tinkl". New to Tinkl? Install it, then tap this link again.
+           No Google Play button until Android launches. -->
+      <span class="btn btn-secondary" aria-disabled="true">Coming soon to the App Store</span>
+      <p class="hint">Already have Tinkl? Tap "Open in Tinkl". Tinkl is coming soon to iPhone.</p>
     </div>
     <a class="home" id="home" href="/">Go to tinkl.au</a>
   </main>
